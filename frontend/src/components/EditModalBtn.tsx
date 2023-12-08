@@ -22,7 +22,7 @@ const EditModalBtn = ({ editModal, setEditModal, userData }: editModalType) => {
             <div>
               <input
                 className="input input-bordered my-5 mx-2"
-                placeholder={userData.name}
+                placeholder={userData.userName}
               ></input>
               <button className="btn btn-primary">Submit</button>
             </div>

@@ -19,7 +19,7 @@ const DeleteModal = ({
             </button>
           </form>
           <h1 className="font-bold text-2xl">Are you sure to delete!</h1>
-          <p className="py-4">{`Are you sure to delete ${userData.name}`}</p>
+          <p className="py-4">{`Are you sure to delete ${userData.userName}`}</p>
           <button className="btn btn-primary">Submit</button>
         </div>
       </dialog>
