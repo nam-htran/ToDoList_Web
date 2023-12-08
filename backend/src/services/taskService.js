@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiUrl from "../constants/api";
+import apiUrl from "../constants/api.js";
 
 export const checkExisted = async (inputName) => {
   try {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import uniqid from "uniqid";
 import { checkExisted } from "../services/taskService.js";
-import apiUrl from "../constants/api";
+import apiUrl from "../constants/api.js";
 
 export const addTaskAPI = async (name) => {
   try {
