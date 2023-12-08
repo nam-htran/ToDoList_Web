@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { InsertModalBtn } from "./index";
+import { DeleteModal, EditModalBtn, InsertModalBtn } from "./index";
 import { apiURL } from "@/constants/api";
 import { Task } from "@/types/task";
 
@@ -43,6 +43,11 @@ const TaskList: React.FC = () => {
     <React.Fragment>
       <div>
         <InsertModalBtn isInsertSuccess={refreshTaskList} />
+        <EditModalBtn editModal={editModal} setEditModal={setEditModal} />
+        <DeleteModal
+          deleteModal={deleteModal}
+          setDeleteModal={setDeleteModal}
+        />
       </div>
       <div className="w-full flex flex-col h-full text-center px-5">
         <table>

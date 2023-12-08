@@ -1,8 +1,9 @@
 "use client";
 
+import { editModalType } from "@/types/editModalType";
 import { useState } from "react";
 
-const EditModalBtn = () => {
+const EditModalBtn = ({ editModal, setEditModal }: editModalType) => {
   const [isOpenModal, setOpenModal] = useState(false);
   return (
     <div>
@@ -23,13 +24,13 @@ const EditModalBtn = () => {
         </svg>
       </div>
       <div>
-        <dialog className={`modal ${isOpenModal ? "modal-open" : ""}`}>
+        <dialog className={`modal ${editModal ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
                 onClick={() => {
-                  setOpenModal(false);
+                  setEditModal(false);
                 }}
               >
                 ✕
