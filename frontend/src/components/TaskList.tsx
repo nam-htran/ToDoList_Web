@@ -43,10 +43,15 @@ const TaskList: React.FC = () => {
     <React.Fragment>
       <div>
         <InsertModalBtn isInsertSuccess={refreshTaskList} />
-        <EditModalBtn editModal={editModal} setEditModal={setEditModal} />
+        <EditModalBtn
+          editModal={editModal}
+          setEditModal={setEditModal}
+          userData={userData}
+        />
         <DeleteModal
           deleteModal={deleteModal}
           setDeleteModal={setDeleteModal}
+          userData={userData}
         />
       </div>
       <div className="w-full flex flex-col h-full text-center px-5">

@@ -1,7 +1,11 @@
 import { deleteModalType } from "@/types/deleteModalType";
 import React from "react";
 
-const DeleteModal = ({ deleteModal, setDeleteModal }: deleteModalType) => {
+const DeleteModal = ({
+  deleteModal,
+  setDeleteModal,
+  userData,
+}: deleteModalType) => {
   return (
     <div>
       <dialog className={`modal ${deleteModal ? "modal-open" : ""}`}>
@@ -14,8 +18,9 @@ const DeleteModal = ({ deleteModal, setDeleteModal }: deleteModalType) => {
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click on ✕ button to close</p>
+          <h1 className="font-bold text-2xl">Are you sure to delete!</h1>
+          <p className="py-4">{`Are you sure to delete ${userData.name}`}</p>
+          <button className="btn btn-primary">Submit</button>
         </div>
       </dialog>
     </div>
