@@ -18,7 +18,7 @@ const InsertModalBtn = ({ isInsertSuccess }: any) => {
       setInputTask("");
       isInsertSuccess();
     } catch (error) {
-      console.log(error);
+      console.error("Error in handleAddTask:", error);
       if (axios.isAxiosError(error) && error.response) {
         setErrorHandling(error.response.data.message);
       }
@@ -44,7 +44,10 @@ const InsertModalBtn = ({ isInsertSuccess }: any) => {
         </svg>
       </div>
       <div>
-        <dialog className={`modal ${isOpenModal ? "modal-open" : ""}`}>
+        <dialog
+          className={`modal ${isOpenModal ? "modal-open" : ""}`}
+          open={isOpenModal}
+        >
           <div className="modal-box">
             <form method="dialog">
               <button

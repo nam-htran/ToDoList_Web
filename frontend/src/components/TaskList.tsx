@@ -13,7 +13,7 @@ const TaskList: React.FC = () => {
       const response = await axios.get(`${apiURL}/get-task`);
       setData(response.data.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error in handleGetTask:", error);
     }
   };
 

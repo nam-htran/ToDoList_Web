@@ -15,6 +15,10 @@ const port = process.env.BACKEND_PORT || 9000;
 
 initWebRoute(router, app);
 
-app.listen(port, () => {
-  console.log("Server is running on PORT", port);
-});
+app
+  .listen(port, () => {
+    console.log("Server is running on PORT", port);
+  })
+  .on("error", (error) => {
+    console.error("Error starting the server:", error);
+  });
