@@ -5,13 +5,13 @@ import apiUrl from "../constants/api.js";
 
 export const addTaskAPI = async (name) => {
   try {
-    if (!name) {
+    if (!name.trim()) {
       return {
         status: "failed",
         message: "You are not input yet",
       };
     }
-    const exist = await checkExisted(name);
+    const exist = await checkExisted(name, "name");
     if (!exist) {
       await axios.post(apiUrl, {
         name: name,
@@ -45,6 +45,55 @@ export const getTaskAPI = async () => {
     };
   } catch (error) {
     console.error("Error in getTaskAPI", error);
+    return {
+      status: "error",
+      message: "An error occurred in the API",
+    };
+  }
+};
+
+export const deleteTaskAPI = async (id) => {
+  try {
+    await axios.delete(`${apiUrl}/${id}`);
+    return {
+      status: "success",
+      message: "Delete task successfully",
+    };
+  } catch (error) {
+    console.error("Error in deleteTaskAPI", error);
+    return {
+      status: "error",
+      message: "An error occurred in the API",
+    };
+  }
+};
+
+export const editTaskAPI = async (id, updateName) => {
+  try {
+    console.log(updateName);
+    if (!updateName.trim()) {
+      return {
+        status: "failed",
+        message: "You are not input yet",
+      };
+    }
+    const checkExist = await checkExisted(id, "id");
+    if (checkExist) {
+      await axios.put(`${apiUrl}/${id}`, {
+        name: updateName,
+      });
+      return {
+        status: "success",
+        message: "Edit task successfully",
+      };
+    } else {
+      return {
+        status: "failed",
+        message: "This user is not exist",
+      };
+    }
+  } catch (error) {
+    console.error("Error in editTaskAPI", error);
     return {
       status: "error",
       message: "An error occurred in the API",

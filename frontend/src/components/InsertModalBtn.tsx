@@ -1,22 +1,23 @@
 "use client";
 
-import axios, { isAxiosError } from "axios";
+import axios from "axios";
 import { useState } from "react";
-import { apiURL } from "@/constants/api";
+import { API_URL } from "@/constants/api";
+import { insertModalType } from "@/types/type";
 
-const InsertModalBtn = ({ isInsertSuccess }: any) => {
+const InsertModalBtn = ({ refreshList }: insertModalType) => {
   const [isOpenModal, setOpenModal] = useState(false);
   const [errorHandling, setErrorHandling] = useState("");
   const [inputTask, setInputTask] = useState("");
 
   const handleAddTask = async () => {
     try {
-      await axios.post(`${apiURL}/add-task`, {
+      await axios.post(`${API_URL}/add-task`, {
         name: inputTask,
       });
       setOpenModal(false);
       setInputTask("");
-      isInsertSuccess();
+      refreshList();
     } catch (error) {
       console.error("Error in handleAddTask:", error);
       if (axios.isAxiosError(error) && error.response) {

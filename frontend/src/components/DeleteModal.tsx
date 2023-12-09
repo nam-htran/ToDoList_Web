@@ -1,11 +1,23 @@
-import { deleteModalType } from "@/types/deleteModalType";
+import { API_URL } from "@/constants/api";
+import { deleteModalType } from "@/types/type";
+import axios from "axios";
 import React from "react";
 
 const DeleteModal = ({
   deleteModal,
   setDeleteModal,
   userData,
+  refreshList,
 }: deleteModalType) => {
+  const handleCallDeleteAPI = async (userID: string) => {
+    try {
+      await axios.delete(`${API_URL}/delete-task/${userID}`);
+      setDeleteModal(false);
+      refreshList();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
   return (
     <div>
       <dialog className={`modal ${deleteModal ? "modal-open" : ""}`}>
@@ -23,7 +35,12 @@ const DeleteModal = ({
             Are you sure to delete
             <span className="text-xl font-bold mx-2">{userData.userName}</span>
           </p>
-          <button className="btn btn-primary">Submit</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => handleCallDeleteAPI(userData.userID)}
+          >
+            Submit
+          </button>
         </div>
       </dialog>
     </div>
