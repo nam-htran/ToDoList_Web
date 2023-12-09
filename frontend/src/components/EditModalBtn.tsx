@@ -2,7 +2,6 @@
 
 import { API_URL } from "@/constants/api";
 import { editModalType } from "@/types/type";
-
 import axios from "axios";
 import { useState } from "react";
 

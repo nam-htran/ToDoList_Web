@@ -1,9 +1,9 @@
 "use client";
 
-import axios from "axios";
-import { useState } from "react";
 import { API_URL } from "@/constants/api";
 import { insertModalType } from "@/types/type";
+import axios from "axios";
+import { useState } from "react";
 
 const InsertModalBtn = ({ refreshList }: insertModalType) => {
   const [isOpenModal, setOpenModal] = useState(false);

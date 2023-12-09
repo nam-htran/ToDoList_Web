@@ -1,3 +1,5 @@
+"use client";
+
 import { API_URL } from "@/constants/api";
 import { deleteModalType } from "@/types/type";
 import axios from "axios";
@@ -30,7 +32,7 @@ const DeleteModal = ({
               ✕
             </button>
           </form>
-          <h1 className="font-bold text-2xl">Are you sure to delete!</h1>
+          <h1 className="font-bold text-2xl">Delete</h1>
           <p className="py-4">
             Are you sure to delete
             <span className="text-xl font-bold mx-2">{userData.userName}</span>

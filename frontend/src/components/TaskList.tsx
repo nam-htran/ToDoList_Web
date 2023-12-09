@@ -1,10 +1,10 @@
 "use client";
 
+import { API_URL } from "@/constants/api";
+import { DeleteModal, EditModalBtn, InsertModalBtn } from "./index";
+import { Task, UserData } from "@/types/type";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { DeleteModal, EditModalBtn, InsertModalBtn } from "./index";
-import { API_URL } from "@/constants/api";
-import { Task, UserData } from "@/types/type";
 
 const TaskList: React.FC = () => {
   const [data, setData] = useState<Task[]>([]);
@@ -24,18 +24,12 @@ const TaskList: React.FC = () => {
     }
   };
 
-  const refreshTaskList = () => {
+  const refreshList = () => {
     handleGetTask();
   };
 
   useEffect(() => {
     handleGetTask();
-    const intervalId = setInterval(() => {
-      refreshTaskList();
-    }, 1000);
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
   }, []);
 
   const handleUserData = (userID: string, userName: string, type: string) => {
@@ -51,18 +45,18 @@ const TaskList: React.FC = () => {
   return (
     <React.Fragment>
       <div>
-        <InsertModalBtn refreshList={refreshTaskList} />
+        <InsertModalBtn refreshList={refreshList} />
         <EditModalBtn
           editModal={editModal}
           setEditModal={setEditModal}
           userData={userData}
-          refreshList={refreshTaskList}
+          refreshList={refreshList}
         />
         <DeleteModal
           deleteModal={deleteModal}
           setDeleteModal={setDeleteModal}
           userData={userData}
-          refreshList={refreshTaskList}
+          refreshList={refreshList}
         />
       </div>
       <div className="w-full flex flex-col h-full text-center px-5">
