@@ -32,7 +32,7 @@ const EditModalBtn = ({
 
   return (
     <div>
-      <div>
+      <div className="text-center">
         <dialog className={`modal ${editModal ? "modal-open" : ""}`}>
           <div className="modal-box">
             <form method="dialog">
@@ -48,16 +48,18 @@ const EditModalBtn = ({
                 ✕
               </button>
             </form>
-            <h1 className="font-bold text-2xl">Insert</h1>
+            <h1 className="text-2xl">
+              Edit <b>{userData.userName}</b>
+            </h1>
             <div>
               <input
-                className="input input-bordered my-5 mx-2"
+                className="input input-bordered my-5 mx-2 w-2/3"
                 placeholder={userData.userName}
                 value={updateData}
                 onChange={(event) => setUpdateData(event?.target.value)}
               ></input>
               <button
-                className="btn btn-primary"
+                className="btn btn-primary w-1/3"
                 onClick={() => handleCallEditAPI(userData.userID, updateData)}
               >
                 Submit
